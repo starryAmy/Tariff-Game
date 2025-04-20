@@ -20,10 +20,10 @@ function deriveActivePlayer(gameTurns) {
 }
 
 function App() {
-  const [gameTurns, setGameTurns] = useState([]); // this is the history of the game turns
+  const [gameTurns, setGameTurns] = useState([]); // this is the history of the game turns - source of truth
   const activePlayer = deriveActivePlayer(gameTurns);
   // --------------render new gameboard ------------------
-  let gameBoard = initialGameBoard; // this is the initial state of the game board
+  let gameBoard = [...initialGameBoard.map((array) => [...array])]; // deep copy
   // loop through the turns and update the game board
   for (const turn of gameTurns) {
     const { square, player } = turn; // destructuring the square and player from the turn object
@@ -61,6 +61,9 @@ function App() {
     });
   }
 
+  function handleRematch() {
+    setGameTurns([]);
+  }
   return (
     <main>
       <div id="game-container">
@@ -76,7 +79,9 @@ function App() {
             isActive={activePlayer === "O"}
           />
         </ol>
-        {(winner || hasDraw) && <GameOver winner={winner} />}
+        {(winner || hasDraw) && (
+          <GameOver winner={winner} onRestart={handleRematch} />
+        )}
         <GameBoard handlePlayer={handlePlayer} board={gameBoard} />
       </div>
       <Log turns={gameTurns} />
