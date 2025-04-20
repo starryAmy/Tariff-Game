@@ -6,15 +6,13 @@ const initialGameBoard = [
   [null, null, null],
 ];
 
-export default function GameBoard({ handlePlayer, activePlayerSymbol }) {
-  const [gameBoard, setGameBoard] = useState(initialGameBoard);
-  function handleSelectSquare(rowIndex, colIndex) {
-    setGameBoard((prevGameBoard) => {
-      const updatedGameBoard = [...prevGameBoard.map((col) => [...col])]; // shallow copy of the array
-      updatedGameBoard[rowIndex][colIndex] = activePlayerSymbol;
-      return updatedGameBoard;
-    });
-    handlePlayer();
+export default function GameBoard({ handlePlayer, turns }) {
+  let gameBoard = initialGameBoard; // this is the initial state of the game board
+  // loop through the turns and update the game board
+  for (const turn of turns) {
+    const { square, player } = turn; // destructuring the square and player from the turn object
+    const { row, col } = square;
+    gameBoard[row][col] = player;
   }
   return (
     <ol id="game-board">
@@ -23,7 +21,7 @@ export default function GameBoard({ handlePlayer, activePlayerSymbol }) {
           <ol>
             {row.map((playerSymbol, colIndex) => (
               <li key={colIndex}>
-                <button onClick={() => handleSelectSquare(rowIndex, colIndex)}>
+                <button onClick={() => handlePlayer(rowIndex, colIndex)}>
                   {playerSymbol}
                 </button>
               </li>
