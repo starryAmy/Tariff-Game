@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const initialGameBoard = [
   [null, null, null],
   [null, null, null],
@@ -21,7 +19,10 @@ export default function GameBoard({ handlePlayer, turns }) {
           <ol>
             {row.map((playerSymbol, colIndex) => (
               <li key={colIndex}>
-                <button onClick={() => handlePlayer(rowIndex, colIndex)}>
+                <button
+                  onClick={() => handlePlayer(rowIndex, colIndex)}
+                  disabled={playerSymbol !== null}
+                >
                   {playerSymbol}
                 </button>
               </li>
