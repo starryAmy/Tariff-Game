@@ -20,7 +20,7 @@ function deriveActivePlayer(gameTurns) {
 }
 
 function App() {
-  const [gameTurns, setGameTurns] = useState([]); // this is the history of the game turns
+  const [gameTurns, setGameTurns] = useState([]); // this is the history of the game turns - source of truth
   const activePlayer = deriveActivePlayer(gameTurns);
   // --------------render new gameboard ------------------
   let gameBoard = [...initialGameBoard.map((array) => [...array])]; // deep copy
