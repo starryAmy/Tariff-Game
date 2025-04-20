@@ -1,20 +1,7 @@
-const initialGameBoard = [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null],
-];
-
-export default function GameBoard({ handlePlayer, turns }) {
-  let gameBoard = initialGameBoard; // this is the initial state of the game board
-  // loop through the turns and update the game board
-  for (const turn of turns) {
-    const { square, player } = turn; // destructuring the square and player from the turn object
-    const { row, col } = square;
-    gameBoard[row][col] = player;
-  }
+export default function GameBoard({ handlePlayer, board }) {
   return (
     <ol id="game-board">
-      {gameBoard.map((row, rowIndex) => (
+      {board.map((row, rowIndex) => (
         <li key={rowIndex}>
           <ol>
             {row.map((playerSymbol, colIndex) => (

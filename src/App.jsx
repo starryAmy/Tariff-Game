@@ -2,6 +2,14 @@ import { useState } from "react";
 import Player from "./components/Player.jsx";
 import GameBoard from "./components/GameBoard.jsx";
 import Log from "./components/Log.jsx";
+import GameOver from "./components/GameOver.jsx";
+import { WINNING_COMBINATIONS } from "./winner_combination.js";
+
+const initialGameBoard = [
+  [null, null, null],
+  [null, null, null],
+  [null, null, null],
+];
 
 function deriveActivePlayer(gameTurns) {
   let currentPlayer = "X";
@@ -10,11 +18,38 @@ function deriveActivePlayer(gameTurns) {
   }
   return currentPlayer;
 }
+
 function App() {
   const [gameTurns, setGameTurns] = useState([]); // this is the history of the game turns
   const activePlayer = deriveActivePlayer(gameTurns);
+  // --------------render new gameboard ------------------
+  let gameBoard = initialGameBoard; // this is the initial state of the game board
+  // loop through the turns and update the game board
+  for (const turn of gameTurns) {
+    const { square, player } = turn; // destructuring the square and player from the turn object
+    const { row, col } = square;
+    gameBoard[row][col] = player;
+  }
+  // --------------render new gameboard ------------------
+
+  // --------------check for winner ------------------
+  let winner;
+  for (const combination of WINNING_COMBINATIONS) {
+    const firstSquare = gameBoard[combination[0].row][combination[0].column];
+    const secondSquare = gameBoard[combination[1].row][combination[1].column];
+    const thirdSquare = gameBoard[combination[2].row][combination[2].column];
+
+    if (
+      firstSquare &&
+      firstSquare === secondSquare &&
+      firstSquare === thirdSquare
+    ) {
+      winner = firstSquare;
+    }
+  }
+  // --------------check for winner ------------------
+
   function handlePlayer(rowIndex, colIndex) {
-    // this arrow function is a callback that takes the previous state and returns the new state
     setGameTurns((prevTurns) => {
       const currentPlayer = deriveActivePlayer(prevTurns);
       const updatedTurns = [
@@ -40,7 +75,8 @@ function App() {
             isActive={activePlayer === "O"}
           />
         </ol>
-        <GameBoard handlePlayer={handlePlayer} turns={gameTurns} />
+        {winner && <p>You won, {winner}!</p>}
+        <GameBoard handlePlayer={handlePlayer} board={gameBoard} />
       </div>
       <Log turns={gameTurns} />
     </main>
