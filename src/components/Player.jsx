@@ -1,6 +1,11 @@
 import { useState } from "react";
 
-export default function Player({ initialName, symbol, isActive }) {
+export default function Player({
+  initialName,
+  symbol,
+  isActive,
+  onNameChange,
+}) {
   const [isEditing, setIsEditing] = useState(false);
   const [buttonText, setButtonText] = useState("Edit");
   const [playerName, setPlayerName] = useState(initialName);
@@ -8,6 +13,9 @@ export default function Player({ initialName, symbol, isActive }) {
   function handleEdit() {
     setIsEditing((editing) => !editing); // this arrow function is a callback that takes the previous state and returns the new state
     setButtonText(isEditing ? "Edit" : "Save");
+    if (isEditing) {
+      onNameChange(symbol, playerName);
+    }
   }
 
   function handleInput(e) {
