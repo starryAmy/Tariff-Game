@@ -47,6 +47,7 @@ function App() {
       winner = firstSquare;
     }
   }
+  const hasDraw = gameTurns.length === 9 && !winner;
   // --------------check for winner ------------------
 
   function handlePlayer(rowIndex, colIndex) {
@@ -75,7 +76,7 @@ function App() {
             isActive={activePlayer === "O"}
           />
         </ol>
-        {winner && <p>You won, {winner}!</p>}
+        {(winner || hasDraw) && <GameOver winner={winner} />}
         <GameBoard handlePlayer={handlePlayer} board={gameBoard} />
       </div>
       <Log turns={gameTurns} />
