@@ -5,7 +5,11 @@ import Log from "./components/Log.jsx";
 import GameOver from "./components/GameOver.jsx";
 import { WINNING_COMBINATIONS } from "./winner_combination.js";
 
-const initialGameBoard = [
+const PLAYERS = {
+  X: "Player 1",
+  O: "Player 2",
+};
+const INITIAL_BOARD_GAME = [
   [null, null, null],
   [null, null, null],
   [null, null, null],
@@ -19,21 +23,17 @@ function deriveActivePlayer(gameTurns) {
   return currentPlayer;
 }
 
-function App() {
-  const [players, setPlayers] = useState({ X: "Player 1", O: "Player 2" }); // this is the player names
-  const [gameTurns, setGameTurns] = useState([]); // this is the history of the game turns - source of truth
-  const activePlayer = deriveActivePlayer(gameTurns);
-  // --------------render new gameboard ------------------
-  let gameBoard = [...initialGameBoard.map((array) => [...array])]; // deep copy
+function deriveGameBoard(gameTurns) {
+  let gameBoard = [...INITIAL_BOARD_GAME.map((array) => [...array])]; // deep copy
   // loop through the turns and update the game board
   for (const turn of gameTurns) {
     const { square, player } = turn; // destructuring the square and player from the turn object
     const { row, col } = square;
     gameBoard[row][col] = player;
   }
-  // --------------render new gameboard ------------------
-
-  // --------------check for winner ------------------
+  return gameBoard;
+}
+function deriveWinner(gameBoard, players) {
   let winner;
   for (const combination of WINNING_COMBINATIONS) {
     const firstSquare = gameBoard[combination[0].row][combination[0].column];
@@ -48,8 +48,16 @@ function App() {
       winner = players[firstSquare];
     }
   }
-  const hasDraw = gameTurns.length === 9 && !winner;
-  // --------------check for winner ------------------
+  return winner;
+}
+
+function App() {
+  const [players, setPlayers] = useState({ X: "Player 1", O: "Player 2" }); // this is the player names
+  const [gameTurns, setGameTurns] = useState([]); // this is the history of the game turns - source of truth
+  const activePlayer = deriveActivePlayer(gameTurns);
+  const gameBoard = deriveGameBoard(gameTurns); // this is the game board - derived from the game turns
+  const winner = deriveWinner(gameBoard, players);
+  const hasDraw = gameTurns.length === 9 && !winner; // this is the draw condition - if all squares are filled and there is no winner
 
   function handlePlayer(rowIndex, colIndex) {
     setGameTurns((prevTurns) => {
@@ -77,13 +85,13 @@ function App() {
       <div id="game-container">
         <ol id="players" className="highlight-player">
           <Player
-            initialName="Player 1"
+            initialName={PLAYERS.X}
             symbol="X"
             isActive={activePlayer === "X"}
             onNameChange={handleNameChange}
           />
           <Player
-            initialName="Player 2"
+            initialName={PLAYERS.O}
             symbol="O"
             isActive={activePlayer === "O"}
             onNameChange={handleNameChange}
