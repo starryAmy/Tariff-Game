@@ -31,7 +31,7 @@ function deriveGameBoard(gameTurns) {
   for (const turn of gameTurns) {
     const { square, player, tax } = turn; // destructuring the square and player from the turn object
     const { row, col } = square;
-    gameBoard[row][col] = tax.toString() + "%";
+    gameBoard[row][col] = [tax.toString() + "%", player];
   }
   return gameBoard;
 }

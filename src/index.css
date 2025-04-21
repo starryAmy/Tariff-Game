@@ -193,6 +193,12 @@ ol {
   font-family: 'Caprasimo', cursive;
   padding: 1rem;
 }
+#game-board button.red-square {
+  background: red;
+}
+#game-board button.blue-square {
+  background: blue;
+}
 
 #game-over {
   position: absolute;

@@ -9,8 +9,15 @@ export default function GameBoard({ handlePlayer, board }) {
                 <button
                   onClick={() => handlePlayer(rowIndex, colIndex)}
                   disabled={playerSymbol !== null}
+                  className={
+                    playerSymbol?.[1] === "Trump"
+                      ? "blue-square"
+                      : playerSymbol?.[1] === "Xi"
+                      ? "red-square"
+                      : ""
+                  }
                 >
-                  {playerSymbol}
+                  {playerSymbol ? playerSymbol[0] : ""}
                 </button>
               </li>
             ))}
