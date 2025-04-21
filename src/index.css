@@ -69,6 +69,7 @@ h1 {
 
 #players li {
   display: flex;
+  flex-direction: column;
   align-items: center;
   width: 50%;
   border: 2px solid transparent;
@@ -99,7 +100,10 @@ h1 {
 #players button:hover {
   color: #f8ca31;
 }
-
+.player-wrapper {
+  display: flex;
+  align-items: center;
+}
 .player {
   border: 2px solid transparent;
   padding: 0.5rem;

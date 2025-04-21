@@ -6,8 +6,8 @@ import GameOver from "./components/GameOver.jsx";
 import { WINNING_COMBINATIONS } from "./winner_combination.js";
 
 const PLAYERS = {
-  X: "Player 1",
-  O: "Player 2",
+  Trump: "Player 1",
+  Xi: "Player 2",
 };
 const INITIAL_BOARD_GAME = [
   [null, null, null],
@@ -18,9 +18,9 @@ const INITIAL_BOARD_GAME = [
 const TAXES = [0, 25, 50, 75, 100, 1.25, 1.5, 1.75, 200];
 
 function deriveActivePlayer(gameTurns) {
-  let currentPlayer = "X";
-  if (gameTurns.length > 0 && gameTurns[0].player === "X") {
-    currentPlayer = "O";
+  let currentPlayer = "Trump";
+  if (gameTurns.length > 0 && gameTurns[0].player === "Trump") {
+    currentPlayer = "Xi";
   }
   return currentPlayer;
 }
@@ -54,7 +54,7 @@ function deriveWinner(gameBoard, players) {
 }
 
 function App() {
-  const [players, setPlayers] = useState({ X: "Player 1", O: "Player 2" }); // this is the player names
+  const [players, setPlayers] = useState({ Trump: "Player 1", Xi: "Player 2" }); // this is the player names
   const [gameTurns, setGameTurns] = useState([]); // this is the history of the game turns - source of truth
   const activePlayer = deriveActivePlayer(gameTurns);
   const gameBoard = deriveGameBoard(gameTurns); // this is the game board - derived from the game turns
@@ -76,11 +76,11 @@ function App() {
       return updatedTurns;
     });
   }
-  function handleNameChange(symbol, newName) {
+  function handleNameChange(character, newName) {
     setPlayers((prevPlayers) => {
       return {
         ...prevPlayers,
-        [symbol]: newName,
+        [character]: newName,
       };
     });
   }
@@ -92,16 +92,16 @@ function App() {
       <div id="game-container">
         <ol id="players" className="highlight-player">
           <Player
-            initialName={PLAYERS.X}
-            symbol="X"
-            isActive={activePlayer === "X"}
+            initialName={PLAYERS.Trump}
+            isActive={activePlayer === "Trump"}
             onNameChange={handleNameChange}
+            character="Trump"
           />
           <Player
-            initialName={PLAYERS.O}
-            symbol="O"
-            isActive={activePlayer === "O"}
+            initialName={PLAYERS.Xi}
+            isActive={activePlayer === "Xi"}
             onNameChange={handleNameChange}
+            character="Xi Jinping"
           />
         </ol>
         {(winner || hasDraw) && (
