@@ -15,6 +15,8 @@ const INITIAL_BOARD_GAME = [
   [null, null, null],
 ];
 
+const TAXES = [0, 25, 50, 75, 100, 1.25, 1.5, 1.75, 200];
+
 function deriveActivePlayer(gameTurns) {
   let currentPlayer = "X";
   if (gameTurns.length > 0 && gameTurns[0].player === "X") {
@@ -27,9 +29,9 @@ function deriveGameBoard(gameTurns) {
   let gameBoard = [...INITIAL_BOARD_GAME.map((array) => [...array])]; // deep copy
   // loop through the turns and update the game board
   for (const turn of gameTurns) {
-    const { square, player } = turn; // destructuring the square and player from the turn object
+    const { square, player, tax } = turn; // destructuring the square and player from the turn object
     const { row, col } = square;
-    gameBoard[row][col] = player;
+    gameBoard[row][col] = tax.toString() + "%";
   }
   return gameBoard;
 }
@@ -62,8 +64,13 @@ function App() {
   function handlePlayer(rowIndex, colIndex) {
     setGameTurns((prevTurns) => {
       const currentPlayer = deriveActivePlayer(prevTurns);
+      let randomTax = TAXES[Math.floor(Math.random() * TAXES.length)];
       const updatedTurns = [
-        { square: { col: colIndex, row: rowIndex }, player: currentPlayer },
+        {
+          square: { col: colIndex, row: rowIndex },
+          player: currentPlayer,
+          tax: randomTax,
+        },
         ...prevTurns,
       ];
       return updatedTurns;
