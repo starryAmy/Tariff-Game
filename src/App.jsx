@@ -4,7 +4,6 @@ import GameBoard from "./components/GameBoard.jsx";
 import Log from "./components/Log.jsx";
 import GameOver from "./components/GameOver.jsx";
 import Fund from "./components/Fund.jsx";
-import { WINNING_COMBINATIONS } from "./winner_combination.js";
 
 const PLAYERS = {
   Trump: "Player 1",
@@ -46,14 +45,20 @@ function deriveFund(gameTurns, player) {
   return remainingFund;
 }
 
-function deriveWinner(gameBoard) {
+function deriveWinner(gameTurns) {
   let winner;
-  let trumpFund = deriveFund(gameBoard, "Trump");
-  let xiFund = deriveFund(gameBoard, "Xi");
+  let trumpFund = deriveFund(gameTurns, "Trump");
+  let xiFund = deriveFund(gameTurns, "Xi");
   if (trumpFund <= 0) {
     winner = "Xi Jinping";
   } else if (xiFund <= 0) {
     winner = "Trump";
+  } else if (gameTurns.length === 9 && trumpFund === xiFund) {
+    winner = "Draw";
+  } else if (gameTurns.length === 9 && trumpFund > xiFund) {
+    winner = "Trump";
+  } else if (gameTurns.length === 9 && trumpFund < xiFund) {
+    winner = "Xi Jinping";
   }
   return winner;
 }
@@ -63,8 +68,7 @@ function App() {
   const [gameTurns, setGameTurns] = useState([]); // this is the history of the game turns - source of truth
   const activePlayer = deriveActivePlayer(gameTurns);
   const gameBoard = deriveGameBoard(gameTurns); // this is the game board - derived from the game turns
-  const winner = deriveWinner(gameBoard);
-  const hasDraw = gameTurns.length === 9 && !winner; // this is the draw condition - if all squares are filled and there is no winner
+  const winner = deriveWinner(gameTurns);
 
   function handlePlayer(rowIndex, colIndex) {
     setGameTurns((prevTurns) => {
@@ -111,9 +115,7 @@ function App() {
               character="Xi Jinping"
             />
           </ol>
-          {(winner || hasDraw) && (
-            <GameOver winner={winner} onRestart={handleRematch} />
-          )}
+          {winner && <GameOver winner={winner} onRestart={handleRematch} />}
           <GameBoard handlePlayer={handlePlayer} board={gameBoard} />
         </div>
         <Log turns={gameTurns} />
