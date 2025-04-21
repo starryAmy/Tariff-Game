@@ -46,20 +46,14 @@ function deriveFund(gameTurns, player) {
   return remainingFund;
 }
 
-function deriveWinner(gameBoard, players) {
+function deriveWinner(gameBoard) {
   let winner;
-  for (const combination of WINNING_COMBINATIONS) {
-    const firstSquare = gameBoard[combination[0].row][combination[0].column];
-    const secondSquare = gameBoard[combination[1].row][combination[1].column];
-    const thirdSquare = gameBoard[combination[2].row][combination[2].column];
-
-    if (
-      firstSquare &&
-      firstSquare === secondSquare &&
-      firstSquare === thirdSquare
-    ) {
-      winner = players[firstSquare];
-    }
+  let trumpFund = deriveFund(gameBoard, "Trump");
+  let xiFund = deriveFund(gameBoard, "Xi");
+  if (trumpFund <= 0) {
+    winner = "Xi Jinping";
+  } else if (xiFund <= 0) {
+    winner = "Trump";
   }
   return winner;
 }
@@ -69,7 +63,7 @@ function App() {
   const [gameTurns, setGameTurns] = useState([]); // this is the history of the game turns - source of truth
   const activePlayer = deriveActivePlayer(gameTurns);
   const gameBoard = deriveGameBoard(gameTurns); // this is the game board - derived from the game turns
-  const winner = deriveWinner(gameBoard, players);
+  const winner = deriveWinner(gameBoard);
   const hasDraw = gameTurns.length === 9 && !winner; // this is the draw condition - if all squares are filled and there is no winner
 
   function handlePlayer(rowIndex, colIndex) {
