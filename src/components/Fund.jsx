@@ -5,8 +5,8 @@ export default function Fund({ player, gameTurns }) {
 
   useEffect(() => {
     const damage = gameTurns
-      .filter((turn) => turn.player === player)
-      .reduce((sum, turn) => sum + 1000 * turn.tax, 0);
+      .filter((turn) => turn.player !== player)
+      .reduce((sum, turn) => sum + 50 * turn.tax, 0);
     setFund(20000 - damage);
   }, [player, gameTurns]);
 
