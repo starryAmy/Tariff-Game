@@ -90,7 +90,7 @@ function App() {
   }
   return (
     <main>
-      <Fund player={Trump} gameTurns={gameTurns} />
+      <Fund player="Trump" gameTurns={gameTurns} />
       <div>
         <div id="game-container">
           <ol id="players" className="highlight-player">
@@ -114,7 +114,7 @@ function App() {
         </div>
         <Log turns={gameTurns} />
       </div>
-      <Fund player={Xi} gameTurns={gameTurns} />
+      <Fund player="Xi" gameTurns={gameTurns} />
     </main>
   );
 }
