@@ -49,7 +49,7 @@ function deriveWinner(gameTurns) {
   let trumpFund = deriveFund(gameTurns, "Trump");
   let xiFund = deriveFund(gameTurns, "Xi");
   if (trumpFund <= 0) {
-    winner = "Xi Jinping";
+    winner = "Xi";
   } else if (xiFund <= 0) {
     winner = "Trump";
   } else if (gameTurns.length === 9 && trumpFund === xiFund) {
@@ -57,7 +57,7 @@ function deriveWinner(gameTurns) {
   } else if (gameTurns.length === 9 && trumpFund > xiFund) {
     winner = "Trump";
   } else if (gameTurns.length === 9 && trumpFund < xiFund) {
-    winner = "Xi Jinping";
+    winner = "Xi";
   }
   return winner;
 }
@@ -114,7 +114,13 @@ function App() {
               character="Xi Jinping"
             />
           </ol>
-          {winner && <GameOver winner={winner} onRestart={handleRematch} />}
+          {winner && (
+            <GameOver
+              winner={winner}
+              onRestart={handleRematch}
+              players={players}
+            />
+          )}
           <GameBoard handlePlayer={handlePlayer} board={gameBoard} />
         </div>
         <Log turns={gameTurns} />
