@@ -36,6 +36,16 @@ function deriveGameBoard(gameTurns) {
   }
   return gameBoard;
 }
+
+function deriveFund(gameTurns, player) {
+  const initialFund = 20000;
+  const damage = gameTurns
+    .filter((turn) => turn.player !== player)
+    .reduce((sum, turn) => sum + 50 * turn.tax, 0);
+  let remainingFund = initialFund - damage;
+  return remainingFund;
+}
+
 function deriveWinner(gameBoard, players) {
   let winner;
   for (const combination of WINNING_COMBINATIONS) {
@@ -90,7 +100,7 @@ function App() {
   }
   return (
     <main>
-      <Fund player="Trump" gameTurns={gameTurns} />
+      <Fund player="Trump" gameTurns={gameTurns} deriveFund={deriveFund} />
       <div>
         <div id="game-container">
           <ol id="players" className="highlight-player">
@@ -114,7 +124,7 @@ function App() {
         </div>
         <Log turns={gameTurns} />
       </div>
-      <Fund player="Xi" gameTurns={gameTurns} />
+      <Fund player="Xi" gameTurns={gameTurns} deriveFund={deriveFund} />
     </main>
   );
 }
