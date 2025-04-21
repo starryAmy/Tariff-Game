@@ -3,6 +3,7 @@ import Player from "./components/Player.jsx";
 import GameBoard from "./components/GameBoard.jsx";
 import Log from "./components/Log.jsx";
 import GameOver from "./components/GameOver.jsx";
+import Fund from "./components/Fund.jsx";
 import { WINNING_COMBINATIONS } from "./winner_combination.js";
 
 const PLAYERS = {
@@ -89,27 +90,31 @@ function App() {
   }
   return (
     <main>
-      <div id="game-container">
-        <ol id="players" className="highlight-player">
-          <Player
-            initialName={PLAYERS.Trump}
-            isActive={activePlayer === "Trump"}
-            onNameChange={handleNameChange}
-            character="Trump"
-          />
-          <Player
-            initialName={PLAYERS.Xi}
-            isActive={activePlayer === "Xi"}
-            onNameChange={handleNameChange}
-            character="Xi Jinping"
-          />
-        </ol>
-        {(winner || hasDraw) && (
-          <GameOver winner={winner} onRestart={handleRematch} />
-        )}
-        <GameBoard handlePlayer={handlePlayer} board={gameBoard} />
+      <Fund />
+      <div>
+        <div id="game-container">
+          <ol id="players" className="highlight-player">
+            <Player
+              initialName={PLAYERS.Trump}
+              isActive={activePlayer === "Trump"}
+              onNameChange={handleNameChange}
+              character="Trump"
+            />
+            <Player
+              initialName={PLAYERS.Xi}
+              isActive={activePlayer === "Xi"}
+              onNameChange={handleNameChange}
+              character="Xi Jinping"
+            />
+          </ol>
+          {(winner || hasDraw) && (
+            <GameOver winner={winner} onRestart={handleRematch} />
+          )}
+          <GameBoard handlePlayer={handlePlayer} board={gameBoard} />
+        </div>
+        <Log turns={gameTurns} />
       </div>
-      <Log turns={gameTurns} />
+      <Fund />
     </main>
   );
 }

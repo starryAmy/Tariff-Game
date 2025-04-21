@@ -47,6 +47,11 @@ h1 {
   color: #3f3b00;
 }
 
+main {
+  display: flex;
+  justify-content: center;
+  gap: 10rem;
+}
 #game-container {
   max-width: 45rem;
   margin: 3rem auto;
