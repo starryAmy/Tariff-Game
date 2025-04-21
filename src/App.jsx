@@ -16,7 +16,7 @@ const INITIAL_BOARD_GAME = [
   [null, null, null],
 ];
 
-const TAXES = [0, 25, 50, 75, 100, 1.25, 1.5, 1.75, 200];
+const TAXES = [0, 25, 50, 75, 100, 125, 150, 175, 200];
 
 function deriveActivePlayer(gameTurns) {
   let currentPlayer = "Trump";
@@ -90,7 +90,7 @@ function App() {
   }
   return (
     <main>
-      <Fund />
+      <Fund player={Trump} gameTurns={gameTurns} />
       <div>
         <div id="game-container">
           <ol id="players" className="highlight-player">
@@ -114,7 +114,7 @@ function App() {
         </div>
         <Log turns={gameTurns} />
       </div>
-      <Fund />
+      <Fund player={Xi} gameTurns={gameTurns} />
     </main>
   );
 }
