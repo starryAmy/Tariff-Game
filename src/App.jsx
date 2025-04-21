@@ -27,9 +27,8 @@ function deriveActivePlayer(gameTurns) {
 
 function deriveGameBoard(gameTurns) {
   let gameBoard = [...INITIAL_BOARD_GAME.map((array) => [...array])]; // deep copy
-  // loop through the turns and update the game board
   for (const turn of gameTurns) {
-    const { square, player, tax } = turn; // destructuring the square and player from the turn object
+    const { square, player, tax } = turn;
     const { row, col } = square;
     gameBoard[row][col] = [tax.toString() + "%", player];
   }
