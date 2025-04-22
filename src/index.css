@@ -45,10 +45,15 @@ header img {
 h1 {
   font-family: 'Caprasimo', cursive;
   font-size: 3rem;
-  margin: 0 auto 3rem auto;
+  margin: 0 auto 1rem auto;
   color: #3f3b00;
 }
 
+header div {
+  font-family: 'Caprasimo', cursive;
+  font-size: 1.5rem;
+  color: #3f3b00;
+}
 main {
   display: flex;
   justify-content: center;
@@ -120,6 +125,20 @@ main {
   justify-content: center;
   padding-left: 1.5rem;
   width: 400px;
+}
+#quotes.quotes-Xi {
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 215, 120, 0.4),  /* 中心色 (偏黃亮) */
+  rgba(255, 200, 0, 0) 70% /* 外圈完全透明 */
+  );
+}
+#quotes.quotes-Trump {
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 215, 120, 0.4),
+    rgba(255, 215, 120, 0) 65%
+  );
 }
 #quotes img {
   width: 2.5rem;

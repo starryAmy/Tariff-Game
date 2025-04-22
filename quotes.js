@@ -1,5 +1,5 @@
 export const TRUMPQUOTES = [
-  "Sorry losers and haters, but my I.Q. is one of the highest—and you all know it!",
+  "Sorry losers and haters, but my I.Q. is one of the highest.",
   "We will have so much winning, you may get bored with winning.",
   "I'm a very stable genius.",
   "China has taken advantage of us for too long. No more!",

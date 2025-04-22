@@ -65,7 +65,7 @@ export default function Fund({
       </div>
 
       {active && gameTurns.length > 0 && (
-        <div id="quotes">
+        <div id="quotes" className={`quotes-${player}`}>
           <img src={deriveQuoteIcon(player)[0]} alt="character" />
           <p style={{ color: player === "Trump" ? "#345E82" : "#DC5018" }}>
             {gameTurns[0].quote}
