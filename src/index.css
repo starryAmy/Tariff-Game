@@ -36,7 +36,7 @@ header {
 }
 
 header img {
-  width: 8rem;
+  width: 15rem;
   object-fit: contain;
   margin: 3rem auto 1rem auto;
   filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4));
@@ -87,17 +87,9 @@ main {
   height: 20rem;
   object-fit: cover;
 }
-/* #fund .coin {
-  width: 3.5rem;
-  height: 3.5rem;
-  object-fit: cover;
-  position: absolute;
-  top: -15px;
-  left: -2px;
-} */
 #fund .fund-bar {
   width: 300px;
-  height: 30px;
+  height: 35px;
   background-color: #ddd;
   border: 5px solid #333;
   border-radius: 10px;
@@ -110,7 +102,9 @@ main {
   transition: width 0.3s ease-in-out;
 }
 #fund .fund-text {
-  color: black;
+  font-size: 1.8rem;
+  margin: 0;
+  font-family: 'Caprasimo', cursive;
 }
 #players {
   list-style: none;
@@ -242,17 +236,17 @@ ol {
   height: 8rem;
   border: none;
   background: #aca788;
-  color: #3f3b00;
+  color: white;
   font-size: 2.2rem;
   cursor: pointer;
   font-family: 'Caprasimo', cursive;
   padding: 1rem;
 }
 #game-board button.red-square {
-  background: red;
+  background: #DC5018;
 }
 #game-board button.blue-square {
-  background: blue;
+  background: #345E82;
 }
 
 #game-over {

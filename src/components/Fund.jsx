@@ -22,11 +22,16 @@ export default function Fund({ player, gameTurns, deriveFund }) {
               className="fund-bar-fill"
               style={{
                 width: `${Math.max((fund / 20000) * 100, 0)}%`,
-                backgroundColor: player === "Trump" ? "blue" : "red",
+                backgroundColor: player === "Trump" ? "#345E82" : "#DC5018",
               }}
             ></div>
           </div>
-          <p className="fund-text">{Math.max(fund, 0)} USD</p>
+          <p
+            className="fund-text"
+            style={{ color: player === "Trump" ? "#345E82" : "#DC5018" }}
+          >
+            {Math.max(fund, 0)} USD
+          </p>
         </div>
       </div>
     </div>
