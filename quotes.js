@@ -5,10 +5,10 @@ export const TRUMPQUOTES = [
   "China has taken advantage of us for too long. No more!",
   "Make America Great Again!",
   "The beauty of me is that I'm very rich.",
-  "I like thinking big. If you're going to be thinking anything, you might as well think big.",
-  "I try to learn from the past, but I plan for the future by focusing exclusively on the present.",
-  "Sometimes by losing a battle you find a new way to win the war.",
-  "Without passion, you don't have energy; without energy, you have nothing."
+  "THIS IS A GREAT TIME TO BUY!!!",
+  "THE GOLDEN RULE OF NEGOTIATING AND SUCCESS: HE WHO HAS THE GOLD MAKES THE RULES.",
+  "Everything I touch turns into gold.",
+  "I will build a great wall — and nobody builds walls better than me, believe me."
 ]
 
 export const XIQUOTES = [

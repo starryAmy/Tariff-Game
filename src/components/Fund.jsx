@@ -2,10 +2,6 @@ import { useState, useEffect } from "react";
 import Trump from "../assets/trump.png";
 import Xi from "../assets/xi.png";
 
-function deriveQuotes(gameTurns, player) {
-  const selectedQuotes = gameTurns.filter((turn) => turn.player === player);
-  return selectedQuotes;
-}
 export default function Fund({
   player,
   gameTurns,
@@ -17,7 +13,7 @@ export default function Fund({
   const character = player === "Trump" ? Trump : Xi;
   let active;
   if (!winner) {
-    active = isActive;
+    active = !isActive;
   } else if (winner && winner === player) {
     active = true;
   } else if (winner && winner !== player) {
@@ -27,13 +23,14 @@ export default function Fund({
   useEffect(() => {
     let remainingFund = deriveFund(gameTurns, player);
     setFund(remainingFund);
+    console.log(gameTurns);
   }, [gameTurns.length]);
 
   return (
     <div id="fund">
       <img
         src={character}
-        alt="Trump"
+        alt="character"
         className={`character-pic ${active ? "active" : ""}`}
       />
       <div className="fund-bar-wrapper">
@@ -56,9 +53,11 @@ export default function Fund({
         </div>
       </div>
       <div id="quotes">
-        {deriveQuotes(gameTurns, player).map((turn) => (
-          <li>{turn.quote}</li>
-        ))}
+        {active && (
+          <p style={{ color: player === "Trump" ? "#345E82" : "#DC5018" }}>
+            {gameTurns.length > 0 ? gameTurns[0].quote : ""}
+          </p>
+        )}
       </div>
     </div>
   );
