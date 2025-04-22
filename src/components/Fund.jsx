@@ -14,6 +14,15 @@ export default function Fund({ player, gameTurns, deriveFund }) {
   return (
     <div id="fund">
       <img src={character} alt="Trump" className="character-pic" />
+      <div className="fund-bar">
+        <div
+          className="fund-bar-fill"
+          style={{
+            width: `${(fund / 20000) * 100}%`,
+            backgroundColor: player === "Trump" ? "blue" : "red",
+          }}
+        ></div>
+      </div>
       <h2>{fund} USD</h2>
     </div>
   );

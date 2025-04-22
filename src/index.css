@@ -75,6 +75,22 @@ main {
   height: 20rem;
   object-fit: cover;
 }
+.fund-bar {
+  width: 300px;
+  height: 30px;
+  background-color: #ddd;
+  border: 2px solid #333;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.fund-bar-fill {
+  height: 100%;
+  background-color: red;
+  transition: width 0.3s ease-in-out;
+}
+
 #players {
   list-style: none;
   padding: 0;
