@@ -1,7 +1,16 @@
 import { useState, useEffect } from "react";
 import Trump from "../assets/trump.png";
 import Xi from "../assets/xi.png";
+import QuoteLeft from "../assets/quote-left.png";
+import QuoteRight from "../assets/quote-right.png";
+import QuoteRightTrump from "../assets/quote-right-trump.png";
+import QuoteLeftTrump from "../assets/quote-left-trump.png";
 
+function deriveQuoteIcon(player) {
+  return player === "Trump"
+    ? [QuoteLeft, QuoteRight]
+    : [QuoteLeftTrump, QuoteRightTrump];
+}
 export default function Fund({
   player,
   gameTurns,
@@ -54,13 +63,20 @@ export default function Fund({
           </p>
         </div>
       </div>
-      <div id="quotes">
-        {active && (
+
+      {active && gameTurns.length > 0 && (
+        <div id="quotes">
+          <img src={deriveQuoteIcon(player)[0]} alt="character" />
           <p style={{ color: player === "Trump" ? "#345E82" : "#DC5018" }}>
-            {gameTurns.length > 0 ? gameTurns[0].quote : ""}
+            {gameTurns[0].quote}
           </p>
-        )}
-      </div>
+          <img
+            src={deriveQuoteIcon(player)[1]}
+            alt="character"
+            style={{ alignSelf: "end" }}
+          />
+        </div>
+      )}
     </div>
   );
 }
