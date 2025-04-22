@@ -97,21 +97,21 @@ function App() {
   }
   return (
     <main>
-      <Fund player="Trump" gameTurns={gameTurns} deriveFund={deriveFund} />
+      <Fund player="Xi" gameTurns={gameTurns} deriveFund={deriveFund} />
       <div>
         <div id="game-container">
           <ol id="players" className="highlight-player">
-            <Player
-              initialName={PLAYERS.Trump}
-              isActive={activePlayer === "Trump"}
-              onNameChange={handleNameChange}
-              character="Trump"
-            />
             <Player
               initialName={PLAYERS.Xi}
               isActive={activePlayer === "Xi"}
               onNameChange={handleNameChange}
               character="Xi Jinping"
+            />
+            <Player
+              initialName={PLAYERS.Trump}
+              isActive={activePlayer === "Trump"}
+              onNameChange={handleNameChange}
+              character="Trump"
             />
           </ol>
           {winner && (
@@ -125,7 +125,7 @@ function App() {
         </div>
         <Log turns={gameTurns} />
       </div>
-      <Fund player="Xi" gameTurns={gameTurns} deriveFund={deriveFund} />
+      <Fund player="Trump" gameTurns={gameTurns} deriveFund={deriveFund} />
     </main>
   );
 }
