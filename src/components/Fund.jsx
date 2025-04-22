@@ -18,12 +18,12 @@ export default function Fund({ player, gameTurns, deriveFund }) {
         <div
           className="fund-bar-fill"
           style={{
-            width: `${(fund / 20000) * 100}%`,
+            width: `${Math.max((fund / 20000) * 100, 0)}%`,
             backgroundColor: player === "Trump" ? "blue" : "red",
           }}
         ></div>
       </div>
-      <h2>{fund} USD</h2>
+      <h2>{Math.max(fund, 0)} USD</h2>
     </div>
   );
 }
