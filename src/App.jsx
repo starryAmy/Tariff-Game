@@ -103,26 +103,26 @@ function App() {
   return (
     <main>
       <Fund
-        player="Xi"
+        player="Trump"
         gameTurns={gameTurns}
         deriveFund={deriveFund}
-        isActive={activePlayer === "Xi"}
+        isActive={activePlayer === "Trump"}
         winner={winner}
       />
       <div>
         <div id="game-container">
           <ol id="players" className="highlight-player">
             <Player
-              initialName={PLAYERS.Xi}
-              isActive={activePlayer === "Xi"}
-              onNameChange={handleNameChange}
-              character="Xi"
-            />
-            <Player
               initialName={PLAYERS.Trump}
               isActive={activePlayer === "Trump"}
               onNameChange={handleNameChange}
               character="Trump"
+            />
+            <Player
+              initialName={PLAYERS.Xi}
+              isActive={activePlayer === "Xi"}
+              onNameChange={handleNameChange}
+              character="Xi"
             />
           </ol>
           {winner && (
@@ -136,10 +136,10 @@ function App() {
         </div>
       </div>
       <Fund
-        player="Trump"
+        player="Xi"
         gameTurns={gameTurns}
         deriveFund={deriveFund}
-        isActive={activePlayer === "Trump"}
+        isActive={activePlayer === "Xi"}
         winner={winner}
       />
     </main>
