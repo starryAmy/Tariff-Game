@@ -116,7 +116,7 @@ function App() {
               initialName={PLAYERS.Xi}
               isActive={activePlayer === "Xi"}
               onNameChange={handleNameChange}
-              character="Xi Jinping"
+              character="Xi"
             />
             <Player
               initialName={PLAYERS.Trump}

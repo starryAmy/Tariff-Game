@@ -31,7 +31,9 @@ export default function Fund({
       <img
         src={character}
         alt="character"
-        className={`character-pic ${active ? "active" : ""}`}
+        className={`character-pic ${
+          gameTurns.length > 0 && active ? "active" : ""
+        }`}
       />
       <div className="fund-bar-wrapper">
         <div className="fund-bar-text">
