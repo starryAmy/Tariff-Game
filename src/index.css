@@ -50,7 +50,7 @@ h1 {
 main {
   display: flex;
   justify-content: center;
-  gap: 5rem;
+  gap: 2rem;
 }
 
 #game-container {
@@ -69,28 +69,47 @@ main {
   align-items: center;
   gap: 2rem;
 }
+#fund .fund-bar-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
 
+#fund .fund-bar-text {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
 #fund .character-pic {
   width: 20rem;
   height: 20rem;
   object-fit: cover;
 }
-.fund-bar {
+/* #fund .coin {
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: cover;
+  position: absolute;
+  top: -15px;
+  left: -2px;
+} */
+#fund .fund-bar {
   width: 300px;
   height: 30px;
   background-color: #ddd;
-  border: 2px solid #333;
+  border: 5px solid #333;
   border-radius: 10px;
   overflow: hidden;
-  margin-top: 8px;
 }
 
-.fund-bar-fill {
+#fund .fund-bar-fill {
   height: 100%;
   background-color: red;
   transition: width 0.3s ease-in-out;
 }
-
+#fund .fund-text {
+  color: black;
+}
 #players {
   list-style: none;
   padding: 0;
