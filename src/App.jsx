@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Player from "./components/Player.jsx";
 import GameBoard from "./components/GameBoard.jsx";
-import Log from "./components/Log.jsx";
 import GameOver from "./components/GameOver.jsx";
 import Fund from "./components/Fund.jsx";
+import { TRUMPQUOTES, XIQUOTES } from "../quotes.js";
 
 const PLAYERS = {
   Trump: "Player 1",
@@ -73,11 +73,16 @@ function App() {
     setGameTurns((prevTurns) => {
       const currentPlayer = deriveActivePlayer(prevTurns);
       let randomTax = TAXES[Math.floor(Math.random() * TAXES.length)];
+      let randomQuote = Math.floor(Math.random() * 10);
       const updatedTurns = [
         {
           square: { col: colIndex, row: rowIndex },
           player: currentPlayer,
           tax: randomTax,
+          quote:
+            currentPlayer === "Trump"
+              ? TRUMPQUOTES[randomQuote]
+              : XIQUOTES[randomQuote],
         },
         ...prevTurns,
       ];
@@ -97,7 +102,13 @@ function App() {
   }
   return (
     <main>
-      <Fund player="Xi" gameTurns={gameTurns} deriveFund={deriveFund} />
+      <Fund
+        player="Xi"
+        gameTurns={gameTurns}
+        deriveFund={deriveFund}
+        isActive={activePlayer === "Xi"}
+        winner={winner}
+      />
       <div>
         <div id="game-container">
           <ol id="players" className="highlight-player">
@@ -124,7 +135,13 @@ function App() {
           <GameBoard handlePlayer={handlePlayer} board={gameBoard} />
         </div>
       </div>
-      <Fund player="Trump" gameTurns={gameTurns} deriveFund={deriveFund} />
+      <Fund
+        player="Trump"
+        gameTurns={gameTurns}
+        deriveFund={deriveFund}
+        isActive={activePlayer === "Trump"}
+        winner={winner}
+      />
     </main>
   );
 }

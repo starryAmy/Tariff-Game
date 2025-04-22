@@ -87,6 +87,12 @@ main {
   height: 20rem;
   object-fit: cover;
 }
+#fund .character-pic.active {
+  width: 25rem;
+  height: 25rem;
+  object-fit: cover;
+}
+
 #fund .fund-bar {
   width: 300px;
   height: 35px;
@@ -98,7 +104,6 @@ main {
 
 #fund .fund-bar-fill {
   height: 100%;
-  background-color: red;
   transition: width 0.3s ease-in-out;
 }
 #fund .fund-text {
