@@ -123,7 +123,6 @@ function App() {
           )}
           <GameBoard handlePlayer={handlePlayer} board={gameBoard} />
         </div>
-        <Log turns={gameTurns} />
       </div>
       <Fund player="Trump" gameTurns={gameTurns} deriveFund={deriveFund} />
     </main>
