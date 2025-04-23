@@ -20,14 +20,7 @@ export default function Fund({
 }) {
   const [fund, setFund] = useState(20000);
   const character = player === "Trump" ? Trump : Xi;
-  let active;
-  if (!winner) {
-    active = !isActive;
-  } else if (winner && winner === player) {
-    active = true;
-  } else if (winner && winner !== player) {
-    active = false;
-  }
+  const afterClickStatus = !winner ? !isActive : winner === player;
 
   useEffect(() => {
     let remainingFund = deriveFund(gameTurns, player);
@@ -41,7 +34,7 @@ export default function Fund({
         src={character}
         alt="character"
         className={`character-pic ${
-          gameTurns.length > 0 && active ? "active" : ""
+          gameTurns.length > 0 && afterClickStatus ? "active" : ""
         }`}
       />
       <div className="fund-bar-wrapper">
@@ -64,7 +57,7 @@ export default function Fund({
         </div>
       </div>
 
-      {active && gameTurns.length > 0 && (
+      {afterClickStatus && gameTurns.length > 0 && (
         <div id="quotes" className={`quotes-${player}`}>
           <img src={deriveQuoteIcon(player)[0]} alt="character" />
           <p style={{ color: player === "Trump" ? "#345E82" : "#DC5018" }}>
