@@ -2,9 +2,9 @@ export default function GameOver({ winner, onRestart, players }) {
   function handleWinner(winner) {
     switch (winner) {
       case "Trump":
-        return `Trump ${players[winner]} wins!`;
+        return `Trump team ${players[winner]} wins!`;
       case "Xi":
-        return `Xi Jinping ${players[winner]} wins!`;
+        return `Xi Jinping team ${players[winner]} wins!`;
       case "Draw":
         return "It's a draw!";
       default:

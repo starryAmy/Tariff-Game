@@ -119,8 +119,8 @@ main {
 #quotes.quotes-Xi {
   background: radial-gradient(
     circle at center,
-    rgba(255, 215, 120, 0.4),  /* 中心色 (偏黃亮) */
-  rgba(255, 200, 0, 0) 70% /* 外圈完全透明 */
+    rgba(255, 215, 120, 0.4),
+  rgba(255, 200, 0, 0) 70%
   );
 }
 #quotes.quotes-Trump {
