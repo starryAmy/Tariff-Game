@@ -10,7 +10,10 @@ export default function Fund({
   isActive,
   winner,
 }) {
-  const character = player === "Trump" ? Trump : Xi;
+  const character =
+    player === "Trump"
+      ? "https://res.cloudinary.com/dawxkhlcq/image/upload/v1745396192/trump_ihfupa.png"
+      : "https://res.cloudinary.com/dawxkhlcq/image/upload/v1745396192/xi_ybdspc.png";
   const afterClickStatus = !winner ? !isActive : winner === player;
 
   return (
