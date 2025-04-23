@@ -45,21 +45,16 @@ function deriveFund(gameTurns, player) {
 }
 
 function deriveWinner(gameTurns) {
-  let winner;
-  let trumpFund = deriveFund(gameTurns, "Trump");
-  let xiFund = deriveFund(gameTurns, "Xi");
-  if (trumpFund <= 0) {
-    winner = "Xi";
-  } else if (xiFund <= 0) {
-    winner = "Trump";
-  } else if (gameTurns.length === 9 && trumpFund === xiFund) {
-    winner = "Draw";
-  } else if (gameTurns.length === 9 && trumpFund > xiFund) {
-    winner = "Trump";
-  } else if (gameTurns.length === 9 && trumpFund < xiFund) {
-    winner = "Xi";
+  const trumpFund = deriveFund(gameTurns, "Trump");
+  const xiFund = deriveFund(gameTurns, "Xi");
+  if (trumpFund <= 0) return "Xi";
+  if (xiFund <= 0) return "Trump";
+
+  if (gameTurns.length === 9) {
+    if (trumpFund === xiFund) return "Draw";
+    return trumpFund > xiFund ? "Trump" : "Xi";
   }
-  return winner;
+  return undefined; // or null if no winner yet
 }
 
 function App() {
