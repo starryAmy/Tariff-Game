@@ -10,8 +10,8 @@ export default function Fund({
 }) {
   const character =
     player === "Trump"
-      ? "https://res.cloudinary.com/dawxkhlcq/image/upload/v1745396192/trump_ihfupa.png"
-      : "https://res.cloudinary.com/dawxkhlcq/image/upload/v1745396192/xi_ybdspc.png";
+      ? "https://res.cloudinary.com/dawxkhlcq/image/upload/f_auto,q_auto/v1745396192/trump_ihfupa.png"
+      : "https://res.cloudinary.com/dawxkhlcq/image/upload/f_auto,q_auto/v1745396192/xi_ybdspc.png";
   const afterClickStatus = !winner ? !isActive : winner === player;
 
   return (

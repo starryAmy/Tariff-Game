@@ -1,12 +1,12 @@
 // import picture from cloudinary
 const QuoteLeft =
-  "https://res.cloudinary.com/dawxkhlcq/image/upload/v1745396142/quote-left_qoymbm.png";
+  "https://res.cloudinary.com/dawxkhlcq/image/upload/f_auto,q_auto/v1745396142/quote-left_qoymbm.png";
 const QuoteRight =
-  "https://res.cloudinary.com/dawxkhlcq/image/upload/v1745396142/quote-right_ph9n8e.png";
+  "https://res.cloudinary.com/dawxkhlcq/image/upload/f_auto,q_auto/v1745396142/quote-right_ph9n8e.png";
 const QuoteLeftTrump =
-  "https://res.cloudinary.com/dawxkhlcq/image/upload/v1745396142/quote-left-trump_po4tfy.png";
+  "https://res.cloudinary.com/dawxkhlcq/image/upload/f_auto,q_auto/v1745396142/quote-left-trump_po4tfy.png";
 const QuoteRightTrump =
-  "https://res.cloudinary.com/dawxkhlcq/image/upload/v1745396142/quote-right-trump_ezzt8e.png";
+  "https://res.cloudinary.com/dawxkhlcq/image/upload/f_auto,q_auto/v1745396142/quote-right-trump_ezzt8e.png";
 
 function deriveQuoteIcon(player) {
   return player === "Trump"
