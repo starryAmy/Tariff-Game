@@ -1,5 +1,3 @@
-import Trump from "../assets/trump.png";
-import Xi from "../assets/xi.png";
 import Bar from "./Bar";
 import Quote from "./Quote";
 
